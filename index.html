@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamUp - Find Your Perfect Team</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <canvas id="teamCanvas"></canvas>
+        <div class="floating-team-elements">
+            <div class="team-element elem-1">🤝</div>
+            <div class="team-element elem-2">🎯</div>
+            <div class="team-element elem-3">👥</div>
+            <div class="team-element elem-4">🚀</div>
+            <div class="team-element elem-5">💡</div>
+            <div class="team-element elem-6">🏆</div>
+            <div class="team-element elem-7">⭐</div>
+            <div class="team-element elem-8">🌟</div>
+        </div>
+        
+        <!-- Animated Bubbles -->
+        <div class="team-bubbles">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+        </div>
+        
+        <!-- Floating Particles -->
+        <div class="floating-particles">
+            <div class="particle p-1"></div>
+            <div class="particle p-2"></div>
+            <div class="particle p-3"></div>
+            <div class="particle p-4"></div>
+            <div class="particle p-5"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="hero-header">
+            <div class="teamup-avatar">
+                <img src="team-up.png" alt="TeamUp" class="teamup-img">
+                <div class="avatar-glow"></div>
+            </div>
+            
+            <h1 class="main-title">
+                <span class="title-word">TEAM</span>
+                <span class="title-word highlight">UP</span>
+            </h1>
+            
+            <p class="subtitle">
+                The platform designed for high school students to find their perfect team.<br>
+                <span class="welcome-text">🎓 Coming soon for high school students</span><br>
+                <span class="welcome-text">🤝 Connect with like-minded peers</span><br>
+                <span class="mission-text">(Building tomorrow's leaders today)</span>
+            </p>
+            
+            <div class="community-badge">
+                <span class="badge-icon">🚀</span>
+                <span>Join our community and be the first to know when we launch</span>
+                <span class="badge-icon">🚀</span>
+            </div>
+        </header>
+
+        <!-- Social Media Links -->
+        <section class="social-links">
+            <a href="https://www.instagram.com/team.up0?igsh=ZTJiamsyd3MwMHY%3D&utm_source=qr" class="social-link instagram" data-platform="instagram" target="_blank">
+                <div class="link-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="link-content">
+                    <span class="link-title">Instagram</span>
+                    <span class="link-subtitle">Follow for updates and team building tips</span>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="link-glow"></div>
+            </a>
+
+            <a href="https://www.tiktok.com/@team.up290?_t=ZT-8z5Gbaxuvxm&_r=1" class="social-link tiktok" data-platform="tiktok" target="_blank">
+                <div class="link-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="link-content">
+                    <span class="link-title">TikTok</span>
+                    <span class="link-subtitle">Quick teamwork tips and sneak peeks</span>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="link-glow"></div>
+            </a>
+
+            <a href="https://docs.google.com/forms/d/12UQl01HLG3L9Jp0MdPOqaSIh9-inutFR8pqsnqQlAXc/viewform?edit_requested=true" class="social-link mailing-list" data-platform="mailing-list" target="_blank">
+                <div class="link-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="link-content">
+                    <span class="link-title">Join Mailing List</span>
+                    <span class="link-subtitle">Be the first to know when TeamUp launches</span>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="link-glow"></div>
+            </a>
+        </section>
+
+        <!-- TeamUp Mission -->
+        <section class="teamup-mission">
+            <div class="mission-container">
+                <div class="mission-mark">"</div>
+                <p class="mission-text">
+                    "Great things in business are never done by one person. They're done by a team of people. 
+                    TeamUp connects high school students to build the teams that will change the world."
+                </p>
+                <div class="mission-author">
+                    - The TeamUp Community
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="disclaimer">
+                <p><strong>COMING SOON:</strong> TeamUp is being built by students, for students. 
+                We're working hard to create the perfect platform to help you connect with peers who share your passion. 
+                Sign up for our mailing list to be notified when we launch!</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TeamUp. All rights reserved. Building tomorrow's leaders today.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

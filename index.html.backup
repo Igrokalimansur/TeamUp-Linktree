@@ -1,0 +1,288 @@
+<!DOCTYPE <body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <canvas id="labCanvas"></canvas>
+        <div class="floating-lab-elements">
+            <div class="lab-element elem-1">🧬</div>
+            <div class="lab-element elem-2">⚛️</div>
+            <div class="lab-element elem-3">🔬</div>
+            <div class="lab-element elem-4">💊</div>
+            <div class="lab-element elem-5">🧪</div>
+            <div class="lab-element elem-6">⚕️</div>
+            <div class="lab-element elem-7">🧫</div>
+            <div class="lab-element elem-8">🦠</div>
+            <div class="lab-element elem-9">💉</div>
+            <div class="lab-element elem-10">🔬</div>
+            <div class="lab-element elem-11">⚗️</div>
+            <div class="lab-element elem-12">🧬</div>
+        </div>
+        
+        <!-- Animated Bubbles -->
+        <div class="lab-bubbles">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+            <div class="bubble bubble-7"></div>
+            <div class="bubble bubble-8"></div>
+        </div>
+        
+        <!-- Floating Particles -->
+        <div class="floating-particles">
+            <div class="particle p-1"></div>
+            <div class="particle p-2"></div>
+            <div class="particle p-3"></div>
+            <div class="particle p-4"></div>
+            <div class="particle p-5"></div>
+            <div class="particle p-6"></div>
+            <div class="particle p-7"></div>
+            <div class="particle p-8"></div>
+            <div class="particle p-9"></div>
+            <div class="particle p-10"></div>
+        </div>g="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Peptides - Your Peptide Research Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+        <!-- Animated Background -->
+    <div class="background-animation">
+        <canvas id="labCanvas"></canvas>
+        <div class="floating-lab-elements">
+            <div class="lab-element elem-1">�</div>
+            <div class="lab-element elem-2">⚛️</div>
+            <div class="lab-element elem-3">🔬</div>
+            <div class="lab-element elem-4">💊</div>
+            <div class="lab-element elem-5">�</div>
+            <div class="lab-element elem-6">⚕️</div>
+            <div class="lab-element elem-7">🧫</div>
+            <div class="lab-element elem-8">🦠</div>
+        </div>
+        
+        <!-- DNA Helix Animation -->
+        <div class="dna-helix">
+            <div class="dna-strand strand-1"></div>
+            <div class="dna-strand strand-2"></div>
+        </div>
+        
+        <!-- Lab Equipment -->
+        <div class="lab-equipment">
+            <div class="beaker beaker-1"></div>
+            <div class="beaker beaker-2"></div>
+            <div class="petri-dish"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+                <!-- Header -->
+        <header class="hero-header">
+            <div class="peter-avatar">
+                <img src="peter.png" alt="Peter Peptides" class="peter-img">
+                <div class="avatar-glow"></div>
+            </div>
+            
+            <h1 class="main-title">
+                <span class="title-word">PETER</span>
+                <span class="title-word highlight">PEPTIDES</span>
+            </h1>
+            
+            <p class="subtitle">
+                Do your own research before buying anything.<br>
+                <span class="warning-text">⚠️ Use code PETER10 for 10% off at SwissChems</span><br>
+                <span class="warning-text">⚠️ Use code PeterPeptides10 for 10% off at Science.Bio</span><br>
+                <span class="research-only">(For research purposes only)</span>
+            </p>
+            
+            <div class="community-badge">
+                <span class="badge-icon">👑</span>
+                <span>Join the community & follow for the truth</span>
+                <span class="badge-icon">👑</span>
+            </div>
+        </header>
+
+        <!-- Social Media Links -->
+        <section class="social-links">
+            <a href="#" class="social-link instagram" data-platform="instagram">
+                <div class="link-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="link-content">
+                    <span class="link-title">Instagram</span>
+                    <span class="link-subtitle">Daily peptide content & Peter memes</span>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="link-glow"></div>
+            </a>
+
+            <a href="#" class="social-link tiktok" data-platform="tiktok">
+                <div class="link-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="link-content">
+                    <span class="link-title">TikTok</span>
+                    <span class="link-subtitle">Short-form peptide education</span>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="link-glow"></div>
+            </a>
+
+            <a href="#" class="social-link discord" data-platform="discord">
+                <div class="link-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <div class="link-content">
+                    <span class="link-title">Discord Community</span>
+                    <span class="link-subtitle">Connect with fellow researchers</span>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="link-glow"></div>
+            </a>
+        </section>
+
+        <!-- Vendor Links -->
+        <section class="vendor-links">
+            <h2 class="section-title">
+                <span class="title-icon">🛒</span>
+                Research Vendors
+                <span class="title-icon">🛒</span>
+            </h2>
+            
+            <a href="#" class="vendor-link swisschems" data-vendor="swisschems">
+                <div class="vendor-header">
+                    <div class="vendor-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="vendor-info">
+                        <span class="vendor-name">SwissChems</span>
+                        <span class="vendor-discount">Use code: PETER10 for 10% off</span>
+                    </div>
+                    <div class="vendor-badge">
+                        <span>🔥 Hot</span>
+                    </div>
+                </div>
+                <div class="vendor-description">
+                    Premium peptides for research purposes
+                </div>
+                <div class="link-glow"></div>
+            </a>
+
+            <a href="#" class="vendor-link sciencebio" data-vendor="sciencebio">
+                <div class="vendor-header">
+                    <div class="vendor-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="vendor-info">
+                        <span class="vendor-name">Science.Bio</span>
+                        <span class="vendor-discount">Use code: PeterPeptides10 for 10% off</span>
+                    </div>
+                    <div class="vendor-badge">
+                        <span>⭐ Popular</span>
+                    </div>
+                </div>
+                <div class="vendor-description">
+                    High-quality research compounds
+                </div>
+                <div class="link-glow"></div>
+            </a>
+        </section>
+
+        <!-- Educational Content -->
+        <section class="educational-content">
+            <h2 class="section-title">
+                <span class="title-icon">📚</span>
+                Educational Resources
+                <span class="title-icon">📚</span>
+            </h2>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card safety" data-content="safety">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety Guide</h3>
+                    <p>Learn about peptide safety and proper research protocols</p>
+                    <div class="card-glow"></div>
+                </a>
+
+                <a href="#" class="content-card research" data-content="research">
+                    <div class="card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Research Papers</h3>
+                    <p>Scientific studies and research findings</p>
+                    <div class="card-glow"></div>
+                </a>
+
+                <a href="#" class="content-card guide" data-content="guide">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Beginner's Guide</h3>
+                    <p>Start your peptide research journey safely</p>
+                    <div class="card-glow"></div>
+                </a>
+
+                <a href="#" class="content-card dangers" data-content="dangers">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Dangers & Risks</h3>
+                    <p>Important warnings and potential risks</p>
+                    <div class="card-glow"></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Peter's Quote -->
+        <section class="peter-quote">
+            <div class="quote-container">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">
+                    "Holy crap, Lois! These peptides are like... science stuff that makes you feel better or something. 
+                    But seriously, do your research and don't be stupid about it!"
+                </p>
+                <div class="quote-author">
+                    - Peter Griffin (Peptide Researcher)
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="disclaimer">
+                <p><strong>DISCLAIMER:</strong> All content is for educational and research purposes only. 
+                Always consult with healthcare professionals before making any decisions. 
+                Peter Peptides does not provide medical advice.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Peter Peptides. All rights reserved. Family Guy characters are property of Fox.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

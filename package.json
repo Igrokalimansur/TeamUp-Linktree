@@ -1,0 +1,22 @@
+{
+  "name": "peter-peptides-landing",
+  "version": "1.0.0",
+  "description": "An amazing animated landing page for Peter Peptides - way better than Linktree!",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "peptides",
+    "research",
+    "landing-page",
+    "peter-griffin",
+    "animations",
+    "linktree-alternative"
+  ],
+  "author": "Peter Peptides Team",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
