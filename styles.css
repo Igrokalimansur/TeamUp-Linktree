@@ -726,9 +726,9 @@ body::before {
   box-shadow: var(--shadow-sm);
 }
 
-.social-link:nth-child(1) { animation-delay: 1.2s; }
-.social-link:nth-child(2) { animation-delay: 1.4s; }
-.social-link:nth-child(3) { animation-delay: 1.6s; }
+.social-link:nth-child(1) { animation-delay: 0.3s; }
+.social-link:nth-child(2) { animation-delay: 0.5s; }
+.social-link:nth-child(3) { animation-delay: 0.7s; }
 
 .social-link:hover {
   transform: translateY(-3px);
@@ -1077,7 +1077,7 @@ body::before {
 /* TeamUp Mission */
 .teamup-mission {
   margin-bottom: 3rem;
-  animation: fadeInUp 1s var(--ease-smooth) 3s both;
+  animation: fadeInUp 1s var(--ease-smooth) 1s both;
 }
 
 .mission-container {
@@ -1118,7 +1118,7 @@ body::before {
 /* Footer */
 .footer {
   margin-top: 3rem;
-  animation: fadeInUp 1s var(--ease-smooth) 3.2s both;
+  animation: fadeInUp 1s var(--ease-smooth) 1.2s both;
 }
 
 .disclaimer {

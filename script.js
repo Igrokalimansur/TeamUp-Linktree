@@ -249,7 +249,7 @@ class TeamUpApp {
         });
 
         // Staggered animation for social links
-        this.staggerAnimation('.social-link', 150);
+        this.staggerAnimation('.social-link', 100);
     }
 
     staggerAnimation(selector, delay) {
