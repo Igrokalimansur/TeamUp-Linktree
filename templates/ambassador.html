@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founding Ambassador Program - TeamUp</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='team-up.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='team-up.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Canvas for grid and signals -->
+    <canvas id="circuit-canvas"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-logo">
+            <img src="{{ url_for('static', filename='team-up.png') }}" alt="TeamUp" class="logo-img">
+        </a>
+        <div class="navbar-links">
+            <a href="{{ url_for('index') }}#more-info" class="nav-link">
+                <span class="nav-link-text">About</span>
+                <span class="nav-link-text nav-link-text--hover">About</span>
+            </a>
+            <a href="{{ url_for('index') }}#features" class="nav-link">
+                <span class="nav-link-text">How It Works</span>
+                <span class="nav-link-text nav-link-text--hover">How It Works</span>
+            </a>
+            <a href="{{ url_for('index') }}#stats" class="nav-link">
+                <span class="nav-link-text">Waitlist</span>
+                <span class="nav-link-text nav-link-text--hover">Waitlist</span>
+            </a>
+            <a href="{{ url_for('ambassador') }}" class="nav-link">
+                <span class="nav-link-text">Founding Ambassadors</span>
+                <span class="nav-link-text nav-link-text--hover">Founding Ambassadors</span>
+            </a>
+        </div>
+        <button id="menuToggle" class="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        <div id="mobileMenu" class="mobile-menu hidden">
+            <a href="{{ url_for('index') }}#more-info" class="mobile-menu-link">About</a>
+            <a href="{{ url_for('index') }}#features" class="mobile-menu-link">How It Works</a>
+            <a href="{{ url_for('index') }}#stats" class="mobile-menu-link">Waitlist</a>
+            <a href="{{ url_for('ambassador') }}" class="mobile-menu-link">Founding Ambassadors</a>
+        </div>
+    </nav>
+
+    <!-- Founding Ambassador Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-heading">Become a <span class="perfect-word">Founding Ambassador</span></h1>
+            <p class="hero-subtitle">Join an exclusive community of leaders shaping the future of student collaboration</p>
+        </div>
+    </section>
+
+    <!-- Founding Ambassador Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="ambassador-content">
+                <div class="ambassador-benefits-grid">
+                    <h2 class="section-title">Founding Ambassador Benefits</h2>
+                    <div class="benefit-cards">
+                        <div class="benefit-card-ambassador">
+                            <div class="benefit-icon-ambassador">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Official Role</h3>
+                            <p>Recognized leadership position for CVs, LinkedIn, and university applications</p>
+                        </div>
+                        <div class="benefit-card-ambassador">
+                            <div class="benefit-icon-ambassador">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3>Certification</h3>
+                            <p>Verified certificate detailing your contribution and impact</p>
+                        </div>
+                        <div class="benefit-card-ambassador">
+                            <div class="benefit-icon-ambassador">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <h3>Letter of Recommendation</h3>
+                            <p>Personalized recommendation letter with quantifiable impact metrics</p>
+                        </div>
+                        <div class="benefit-card-ambassador">
+                            <div class="benefit-icon-ambassador">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Priority Opportunities</h3>
+                            <p>Priority consideration for future leadership roles and internships</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ambassador-requirements-section">
+                    <h2 class="section-title">Requirements</h2>
+                    <div class="requirements-grid">
+                        <div class="requirement-card">
+                            <i class="fas fa-user-graduate"></i>
+                            <h4>High School Student</h4>
+                            <p>Currently enrolled with access to an active student community</p>
+                        </div>
+                        <div class="requirement-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Community Access</h4>
+                            <p>Club, class, competition group, or organization</p>
+                        </div>
+                        <div class="requirement-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Proven Impact</h4>
+                            <p>Ability to onboard students and demonstrate tangible contributions</p>
+                        </div>
+                        <div class="requirement-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>Time Commitment</h4>
+                            <p>1–2 hours per week while actively involved</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ambassador-note">
+                    <i class="fas fa-info-circle"></i>
+                    <p>TeamUp is an early-stage startup. This role is for students who want to grow alongside the platform and contribute in meaningful, practical ways.</p>
+                </div>
+                
+                <!-- Ambassador Application Form -->
+                <div class="ambassador-cta">
+                    <h2 class="section-title">Apply Now</h2>
+                    
+                    <form id="ambassadorForm" class="ambassador-form">
+                        <!-- Personal Information -->
+                        <div class="form-step active" data-step="1">
+                            <h3 class="step-title">Personal Information</h3>
+                            <p class="step-description">Tell us a bit about yourself</p>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="school">School *</label>
+                                    <input type="text" id="school" name="school" required placeholder="Your High School Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="grade">Grade *</label>
+                                    <select id="grade" name="grade" required>
+                                        <option value="">Select Grade</option>
+                                        <option value="9th">9th Grade</option>
+                                        <option value="10th">10th Grade</option>
+                                        <option value="11th">11th Grade</option>
+                                        <option value="12th">12th Grade</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Community & Commitment -->
+                        <div class="form-step" data-step="2">
+                            <h3 class="step-title">Community & Commitment</h3>
+                            <p class="step-description">Tell us about your community access and availability</p>
+                            
+                            <div class="form-group">
+                                <label for="community_access">Community Access *</label>
+                                <input type="text" id="community_access" name="community_access" required placeholder="e.g., Robotics Club, Debate Team, Science Olympiad">
+                                <small>What club, class, competition group, or organization do you have access to?</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="time_commitment">Time Commitment *</label>
+                                <select id="time_commitment" name="time_commitment" required>
+                                    <option value="">Select Time Commitment</option>
+                                    <option value="1 hour/week">1 hour/week</option>
+                                    <option value="1-2 hours/week">1-2 hours/week</option>
+                                    <option value="2+ hours/week">2+ hours/week</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Motivation & Experience -->
+                        <div class="form-step" data-step="3">
+                            <h3 class="step-title">Motivation & Experience</h3>
+                            <p class="step-description">Share why you want to be a Founding Ambassador</p>
+                            
+                            <div class="form-group">
+                                <label for="why_interested">Why are you interested in becoming a Founding Ambassador? *</label>
+                                <textarea id="why_interested" name="why_interested" rows="5" required placeholder="Tell us why you're interested in this role..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="experience">Relevant Experience (Optional)</label>
+                                <textarea id="experience" name="experience" rows="4" placeholder="Any leadership roles, community building experience, projects you've led, etc."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div id="ambassadorMessage" class="form-message"></div>
+                        
+                        <!-- Submit Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button type="submit" class="nav-button nav-button-submit" id="submitButton" style="display: inline-flex; padding: 1rem 2.5rem; font-size: 1.1rem;">
+                                <span>Submit Application</span>
+                                <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p class="footer-text">&copy; 2025 TeamUp. Made by Students for Students.</p>
+                <div class="footer-connect">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/team.up0" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/teamupconnect" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const menuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
+            });
+        }
+
+        // Form validation and submission
+        const submitButton = document.getElementById('submitButton');
+        const form = document.getElementById('ambassadorForm');
+        
+        function validateForm() {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            // Email validation
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value && !emailRegex.test(email.value)) {
+                isValid = false;
+                email.classList.add('error');
+            }
+            
+            return isValid;
+        }
+        
+        // Ambassador form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                const messageDiv = document.getElementById('ambassadorMessage');
+                messageDiv.textContent = 'Please fill in all required fields.';
+                messageDiv.className = 'form-message error';
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return;
+            }
+            
+            const messageDiv = document.getElementById('ambassadorMessage');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                school: document.getElementById('school').value.trim(),
+                grade: document.getElementById('grade').value,
+                community_access: document.getElementById('community_access').value.trim(),
+                why_interested: document.getElementById('why_interested').value.trim(),
+                experience: document.getElementById('experience').value.trim(),
+                time_commitment: document.getElementById('time_commitment').value
+            };
+            
+            // Disable form during submission
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin" style="margin-left: 0.5rem;"></i>';
+            messageDiv.textContent = '';
+            messageDiv.className = 'form-message';
+            
+            try {
+                const response = await fetch('{{ url_for("submit_ambassador_application") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    messageDiv.textContent = data.message;
+                    messageDiv.className = 'form-message success';
+                    form.reset();
+                    // Scroll to message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    messageDiv.textContent = data.message;
+                    messageDiv.className = 'form-message error';
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            } catch (error) {
+                messageDiv.textContent = 'An error occurred. Please try again.';
+                messageDiv.className = 'form-message error';
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<span>Submit Application</span><i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
+

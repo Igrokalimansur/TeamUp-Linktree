@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamUp - Find the perfect teammates in seconds</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='team-up.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='team-up.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Standard SEO -->
+    <meta name="description" content="TeamUp connects high school students to find perfect teammates in seconds. Join the premier platform for building teams, competitions, and university applications.">
+    <meta name="keywords" content="Teamup, Ali-Mansur Valiyev, University Applications, Finding Teammates for Competitions, High School Networking, Student Competitions, Hackathons, Project Partners, College Admissions, Extracurriculars, STEM Projects, Business Competitions, LaunchX">
+    <meta name="author" content="Ali-Mansur Valiyev">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#050508">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://teamup.link">
+    <meta property="og:title" content="TeamUp - Find the perfect teammates in seconds">
+    <meta property="og:description" content="Join the premier platform for high schoolers to build teams, boost university applications, and win competitions.">
+    <meta property="og:image" content="{{ url_for('static', filename='team-up.png', _external=True) }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TeamUp - Find the perfect teammates in seconds">
+    <meta name="twitter:description" content="Connect with high school students for competitions and projects.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='team-up.png', _external=True) }}">
+</head>
+<body>
+    <!-- Canvas for grid and signals -->
+    <canvas id="circuit-canvas"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-logo">
+            <img src="{{ url_for('static', filename='team-up.png') }}" alt="TeamUp" class="logo-img">
+        </a>
+        <div class="navbar-links">
+            <a href="{{ url_for('index') }}#more-info" class="nav-link">
+                <span class="nav-link-text">About</span>
+                <span class="nav-link-text nav-link-text--hover">About</span>
+            </a>
+            <a href="{{ url_for('index') }}#features" class="nav-link">
+                <span class="nav-link-text">How It Works</span>
+                <span class="nav-link-text nav-link-text--hover">How It Works</span>
+            </a>
+            <a href="{{ url_for('index') }}#stats" class="nav-link">
+                <span class="nav-link-text">Waitlist</span>
+                <span class="nav-link-text nav-link-text--hover">Waitlist</span>
+            </a>
+            <a href="{{ url_for('ambassador') }}" class="nav-link">
+                <span class="nav-link-text">Founding Ambassadors</span>
+                <span class="nav-link-text nav-link-text--hover">Founding Ambassadors</span>
+            </a>
+        </div>
+        <button id="menuToggle" class="mobile-menu-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        <div id="mobileMenu" class="mobile-menu hidden">
+            <a href="{{ url_for('index') }}#more-info" class="mobile-menu-link">About</a>
+            <a href="{{ url_for('index') }}#features" class="mobile-menu-link">How It Works</a>
+            <a href="{{ url_for('index') }}#stats" class="mobile-menu-link">Waitlist</a>
+            <a href="{{ url_for('ambassador') }}" class="mobile-menu-link">Founding Ambassadors</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-heading">
+                Find the <span class="perfect-word">perfect teammates</span>
+            </h1>
+            <h1 class="hero-heading">in seconds</h1>
+            
+            <div class="hero-buttons">
+                <a href="#more-info" class="hero-button hero-button--primary">
+                    <span>More Info</span>
+                    <svg class="lightning-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="{{ url_for('ambassador') }}" class="hero-button hero-button--ghost">
+                    <span>Founding Ambassador Program</span>
+                </a>
+            </div>
+            
+            <a href="#more-info" class="scroll-down-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About TeamUp Section -->
+    <section id="more-info" class="content-section about-section">
+        <div class="about-background"></div>
+        <div class="section-container">
+            <h2 class="section-title">About TeamUp</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    We're revolutionizing how high schoolers connect and collaborate by helping them find perfect teammates for competitions, projects, startups, and more in seconds.
+                </p>
+                <p class="about-text">
+                    Built by a team of high schoolers, we understand the challenges that come with finding people to work with. We're here to fix this problem and create a network for high school students to connect with each other.
+                </p>
+                    
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process Section -->
+    <section id="features" class="content-section process-section">
+        <div class="section-container">
+            <h2 class="section-title">The Process</h2>
+            <div class="process-container">
+                <div class="process-item" data-step="1">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">1</div>
+                    </div>
+                    <h3>Create Your Profile</h3>
+                </div>
+                <div class="process-item" data-step="2">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">2</div>
+                    </div>
+                    <h3>Showcase Your Skills</h3>
+                </div>
+                <div class="process-item" data-step="3">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">3</div>
+                    </div>
+                    <h3>Find Your Perfect Team</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="content-section benefits-section">
+        <div class="section-container">
+            <h2 class="section-title">Why TeamUp?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Win Competitions</h3>
+                    <p>Build winning teams for hackathons, business competitions, and STEM projects that stand out</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Launch Projects</h3>
+                    <p>Transform ideas into reality with teammates who share your passion and ambition</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Boost Applications</h3>
+                    <p>Elevate your university and job applications with impressive collaborative achievements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join The Movement Section -->
+    <section id="stats" class="content-section content-section--alt">
+        <div class="section-container">
+            <h2 class="section-title">Join The Movement</h2>
+            <div class="join-content">
+                <p class="join-text">Join our waitlist to be notified when we launch, or check out our <a href="{{ url_for('ambassador') }}" class="join-link">Founding Ambassador program</a></p>
+                
+                <!-- Email Waitlist Form -->
+                <div class="waitlist-form-container">
+                    <form id="waitlistForm" class="waitlist-form">
+                        <div class="waitlist-form-group">
+                            <input 
+                                type="email" 
+                                id="waitlistEmail" 
+                                name="email" 
+                                placeholder="Enter your email to join the waitlist" 
+                                required
+                                class="waitlist-input"
+                            >
+                            <button type="submit" class="waitlist-button">
+                                <span>Join Waitlist</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div id="waitlistMessage" class="waitlist-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p class="footer-text">&copy; 2025 TeamUp. Made by Students for Students.</p>
+                <div class="footer-connect">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/team.up0" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/teamupconnect" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const menuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
+            });
+        }
+
+        // Waitlist form submission
+        document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const emailInput = document.getElementById('waitlistEmail');
+            const messageDiv = document.getElementById('waitlistMessage');
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            const email = emailInput.value.trim();
+            
+            // Disable form during submission
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span>Joining...</span>';
+            messageDiv.textContent = '';
+            messageDiv.className = 'waitlist-message';
+            
+            try {
+                const response = await fetch('{{ url_for("add_to_waitlist") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    messageDiv.textContent = data.message;
+                    messageDiv.className = 'waitlist-message success';
+                    emailInput.value = '';
+                } else {
+                    messageDiv.textContent = data.message;
+                    messageDiv.className = 'waitlist-message error';
+                }
+            } catch (error) {
+                messageDiv.textContent = 'An error occurred. Please try again.';
+                messageDiv.className = 'waitlist-message error';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<span>Join Waitlist</span><i class="fas fa-arrow-right"></i>';
+            }
+        });
+
+    </script>
+</body>
+</html>

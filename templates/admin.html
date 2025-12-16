@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TeamUp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #050508;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            color: #a855f7;
+        }
+        .logout-btn {
+            padding: 8px 16px;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            color: #ef4444;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: #a855f7;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #a855f7;
+        }
+        .stat-label {
+            color: #b0b0b0;
+            margin-top: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(168, 85, 247, 0.1);
+            color: #a855f7;
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .email {
+            color: #60a5fa;
+        }
+        .date {
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #b0b0b0;
+        }
+        .application-details {
+            max-width: 600px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 6px;
+            color: #a855f7;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .filter-btn:hover {
+            background: rgba(168, 85, 247, 0.2);
+        }
+        .filter-btn.active {
+            background: rgba(168, 85, 247, 0.3);
+            border-color: #a855f7;
+        }
+        .action-cell {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #a855f7;
+        }
+        .delete-btn {
+            padding: 6px 12px;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            color: #ef4444;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .delete-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+        .sent-label {
+            color: #10b981;
+            font-size: 14px;
+        }
+        tr.sent-row {
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .action-cell {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>TeamUp Admin Panel</h1>
+        <a href="{{ url_for('admin_logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-value">{{ waitlist|length }}</div>
+            <div class="stat-label">Waitlist Entries</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ applications|length }}</div>
+            <div class="stat-label">Ambassador Applications</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Waitlist</h2>
+        <div class="filter-buttons">
+            <a href="?waitlist_filter=all&ambassador_filter={{ ambassador_filter }}" 
+               class="filter-btn {% if waitlist_filter == 'all' %}active{% endif %}">All</a>
+            <a href="?waitlist_filter=sent&ambassador_filter={{ ambassador_filter }}" 
+               class="filter-btn {% if waitlist_filter == 'sent' %}active{% endif %}">Sent</a>
+            <a href="?waitlist_filter=not_sent&ambassador_filter={{ ambassador_filter }}" 
+               class="filter-btn {% if waitlist_filter == 'not_sent' %}active{% endif %}">Not Sent</a>
+        </div>
+        {% if waitlist %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Date Joined</th>
+                    <th>Sent</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in waitlist %}
+                <tr class="{% if entry.sent %}sent-row{% endif %}" id="waitlist-row-{{ entry.id }}">
+                    <td>{{ entry.id }}</td>
+                    <td class="email">{{ entry.email }}</td>
+                    <td class="date">{{ entry.created_at }}</td>
+                    <td>
+                        <div class="action-cell">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" 
+                                       id="waitlist-sent-{{ entry.id }}" 
+                                       {% if entry.sent %}checked{% endif %}
+                                       onchange="toggleWaitlistSent({{ entry.id }})">
+                                <label for="waitlist-sent-{{ entry.id }}" class="sent-label">
+                                    {% if entry.sent %}Sent{% else %}Not Sent{% endif %}
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteWaitlistEntry({{ entry.id }})">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty">No waitlist entries yet.</div>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Ambassador Applications</h2>
+        <div class="filter-buttons">
+            <a href="?waitlist_filter={{ waitlist_filter }}&ambassador_filter=all" 
+               class="filter-btn {% if ambassador_filter == 'all' %}active{% endif %}">All</a>
+            <a href="?waitlist_filter={{ waitlist_filter }}&ambassador_filter=sent" 
+               class="filter-btn {% if ambassador_filter == 'sent' %}active{% endif %}">Sent</a>
+            <a href="?waitlist_filter={{ waitlist_filter }}&ambassador_filter=not_sent" 
+               class="filter-btn {% if ambassador_filter == 'not_sent' %}active{% endif %}">Not Sent</a>
+        </div>
+        {% if applications %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>School</th>
+                    <th>Grade</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                    <th>Sent</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr class="{% if app.sent %}sent-row{% endif %}" id="ambassador-row-{{ app.id }}">
+                    <td>{{ app.id }}</td>
+                    <td>{{ app.name }}</td>
+                    <td class="email">{{ app.email }}</td>
+                    <td>{{ app.school }}</td>
+                    <td>{{ app.grade }}</td>
+                    <td>
+                        <div class="application-details">
+                            <strong>Community Access:</strong> {{ app.community_access }}
+                            <br><strong>Why Interested:</strong> {{ app.why_interested }}
+                            {% if app.experience %}
+                            <br><strong>Experience:</strong> {{ app.experience }}
+                            {% endif %}
+                            <br><strong>Time Commitment:</strong> {{ app.time_commitment }}
+                        </div>
+                    </td>
+                    <td class="date">{{ app.created_at }}</td>
+                    <td>
+                        <div class="action-cell">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" 
+                                       id="ambassador-sent-{{ app.id }}" 
+                                       {% if app.sent %}checked{% endif %}
+                                       onchange="toggleAmbassadorSent({{ app.id }})">
+                                <label for="ambassador-sent-{{ app.id }}" class="sent-label">
+                                    {% if app.sent %}Sent{% else %}Not Sent{% endif %}
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteAmbassadorApplication({{ app.id }})">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty">No ambassador applications yet.</div>
+        {% endif %}
+    </div>
+
+    <script>
+        async function toggleWaitlistSent(entryId) {
+            try {
+                const response = await fetch(`/api/admin/waitlist/${entryId}/toggle-sent`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                if (data.success) {
+                    const checkbox = document.getElementById(`waitlist-sent-${entryId}`);
+                    const label = checkbox.nextElementSibling;
+                    const row = document.getElementById(`waitlist-row-${entryId}`);
+                    label.textContent = data.sent ? 'Sent' : 'Not Sent';
+                    if (data.sent) {
+                        row.classList.add('sent-row');
+                    } else {
+                        row.classList.remove('sent-row');
+                    }
+                } else {
+                    alert('Failed to update sent status');
+                    checkbox.checked = !checkbox.checked;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred');
+                const checkbox = document.getElementById(`waitlist-sent-${entryId}`);
+                checkbox.checked = !checkbox.checked;
+            }
+        }
+
+        async function deleteWaitlistEntry(entryId) {
+            if (!confirm('Are you sure you want to delete this waitlist entry?')) {
+                return;
+            }
+            try {
+                const response = await fetch(`/api/admin/waitlist/${entryId}/delete`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                if (data.success) {
+                    const row = document.getElementById(`waitlist-row-${entryId}`);
+                    row.remove();
+                    // Reload page to update stats
+                    location.reload();
+                } else {
+                    alert('Failed to delete entry');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred');
+            }
+        }
+
+        async function toggleAmbassadorSent(appId) {
+            try {
+                const response = await fetch(`/api/admin/ambassador/${appId}/toggle-sent`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                if (data.success) {
+                    const checkbox = document.getElementById(`ambassador-sent-${appId}`);
+                    const label = checkbox.nextElementSibling;
+                    const row = document.getElementById(`ambassador-row-${appId}`);
+                    label.textContent = data.sent ? 'Sent' : 'Not Sent';
+                    if (data.sent) {
+                        row.classList.add('sent-row');
+                    } else {
+                        row.classList.remove('sent-row');
+                    }
+                } else {
+                    alert('Failed to update sent status');
+                    checkbox.checked = !checkbox.checked;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred');
+                const checkbox = document.getElementById(`ambassador-sent-${appId}`);
+                checkbox.checked = !checkbox.checked;
+            }
+        }
+
+        async function deleteAmbassadorApplication(appId) {
+            if (!confirm('Are you sure you want to delete this ambassador application?')) {
+                return;
+            }
+            try {
+                const response = await fetch(`/api/admin/ambassador/${appId}/delete`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                if (data.success) {
+                    const row = document.getElementById(`ambassador-row-${appId}`);
+                    row.remove();
+                    // Reload page to update stats
+                    location.reload();
+                } else {
+                    alert('Failed to delete application');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred');
+            }
+        }
+    </script>
+</body>
+</html>
+
