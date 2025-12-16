@@ -8,5 +8,5 @@ cmds = ["pip install -r requirements.txt"]
 cmds = []
 
 [start]
-cmd = "gunicorn app:app"
+cmd = "bash start.sh"
 
