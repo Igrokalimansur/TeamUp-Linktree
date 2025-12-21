@@ -2,7 +2,7 @@
  * Circuit Grid Animation
  * - Edge-to-edge signal paths on a precise grid
  * - Constant speed, purple-only, no randomness in motion
- * - Hover interaction: grid nodes expand + whiten near cursor
+ * - Hover interaction: grid nodes expand + whiten near cursor wow
  */
 (function() {
     'use strict';
