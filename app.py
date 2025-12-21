@@ -8,10 +8,16 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 
 # Database setup
-DATABASE = 'teamup.db'
+# Use /instance directory for Render persistent disk, fallback to local for development
+INSTANCE_DIR = '/instance'
+if not os.path.exists(INSTANCE_DIR):
+    os.makedirs(INSTANCE_DIR, exist_ok=True)
+DATABASE = os.path.join(INSTANCE_DIR, 'teamup.db')
 
 def init_db():
     """Initialize the database with required tables"""
+    # Ensure instance directory exists
+    os.makedirs(INSTANCE_DIR, exist_ok=True)
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
     
